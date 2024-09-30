@@ -1,0 +1,28 @@
+
+<!-- views/userTransactions.ejs -->
+<% layout('./layout/layout') %>
+<div class="mx-auto w-full sm:w-1/2 p-4">
+<h1 class="text-2xl font-bold mb-4">Check Issued Books</h1>
+
+<form action="/transaction/user" method="GET">
+    <select class="bg-zinc-100 rounded-xl pl-4 p-2 w-full" name="userId" id="userId">
+        <option>Select User</option>
+        <% users.forEach(function(user) { %>
+            <option value="<%= user._id %>"><%= user.username %></option>
+        <% }) %>
+    </select>
+    <input  class="m-4 bg-black text-white p-2 hover:bg-white hover:text-black hover:border hover:border-black rounded-xl" type="submit" value="Check Books">
+</form>
+
+<%if(books){ %>
+<h2 class="text-xl font-bold">Issued Books:</h2>
+<p class="font-medium font-lg"><%= message %></p>
+<ul>
+    <% if (books.length > 0) { %>
+        <% books.forEach(function(book) { %>
+            <li ><%= book %></li>
+        <% }) %>
+    <% } %>
+</ul>
+<%}%>
+</div>

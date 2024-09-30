@@ -1,0 +1,17 @@
+<% layout('./layout/layout') %>
+
+<div class="sm:w-1/2 mx-auto py-6"  >
+<h1  class="text-2xl font-bold mb-4">Book Search Total Rent</h1>
+<form action="/transaction/totalRentCheck" method="GET"> <!-- Use GET method -->
+    <label for="bookName">Book Name:</label>
+  <select class="bg-zinc-100 rounded-xl pl-4 p-2 w-full" name="bookName" id="bookName">
+    <% for (let book of books) { %>
+      <option value="<%= book.bookName %>"><%= book.bookName %></option>
+    <% } %>
+  </select>
+    <button class="m-4 bg-black text-white p-2 hover:bg-white hover:text-black hover:border hover:border-black rounded-xl" type="submit">Submit</button>
+</form>
+
+
+<h2><%= totalRent %></h2>
+</div>

@@ -1,0 +1,40 @@
+<% layout('./layout/layout') %>
+<div class="w-1/2 mx-auto py-6">
+    <h1 class="text-2xl font-bold mb-4" >Filter Search</h1>
+<form action="/books/filter" method="GET">
+    <div class="mb-2">
+    <label class="my-1" for="Category">Category</label>
+    <input  class="bg-zinc-100 rounded-xl pl-4 p-2 w-full" name="category" id="Category" type="text" placeholder="Enter Category"  required > 
+   </div>
+   <div class="mb-2">
+    <label class="my-1" for="name">Name</label>
+    <input  class="bg-zinc-100 rounded-xl pl-4 p-2 w-full" name="name" id="name" type="text" placeholder="Enter name"  required > 
+   </div>
+   <div class="mb-2">
+    <label class="my-1" for="min range">Min range</label>
+    <input  class="bg-zinc-100 rounded-xl pl-4 p-2 w-full" name="min" id="min range" type="number" placeholder="Enter min range"  required > 
+   </div>
+   <div class="mb-2">
+    <label class="my-1" for="max range">max range</label>
+    <input  class="bg-zinc-100 rounded-xl pl-4 p-2 w-full" name="max" id="max range" type="number" placeholder="Enter max range"  required > 
+   </div>
+   <input class="m-4 bg-black text-white p-2 hover:bg-white hover:text-black hover:border hover:border-black rounded-xl" type="submit">
+</form>
+
+<% if (books ) { %>
+    <h2 class="text-xl font-bold">Search Results:</h2>
+
+<% if (books && books.length > 0) { %>
+    <ul>
+        <% books.forEach(book => { %>
+            <li>
+                <strong><%= book.bookName %></strong> - <%= book.category %> - $<%= book.rentPerDay %>/day
+            </li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <p>No books found.</p>
+<% } %>
+<% } %>
+
+</div>
